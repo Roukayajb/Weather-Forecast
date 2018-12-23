@@ -1,0 +1,77 @@
+<section>
+  <div class="row">
+    <nav class="navbar mynav navbar-expand-lg navbar-light justify-content-center">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row inputSearch align-content-center align-items-center justify-content-center">
+    <div class="input-group mb-3">
+
+      <input type="text" [(ngModel)]="cityName" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" (click)="searchCity('cityName')" type="button">Get Weather</button>
+      </div>
+    </div>
+  </div>
+  <div class="row align-content-center align-items-center justify-content-center">
+    <div class="card cardWeather justify-content-center text-white bg-dark mb-3">
+      <div class="card-header text-center">{{weatherData.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="http://www.geognos.com/api/en/countries/flag/{{weatherData.sys.country}}.png" width="10%">
+      </div>
+      <div class="card-body myCard justify-content-center">
+        <p class="text-center" style="font-family:'cursive';font-size: 25px">{{jstoday}}</p>
+      </div>
+
+      <div class="row icon justify-content-center">
+
+        <img width="40%" height="40%" id="wicon" src='http://openweathermap.org/img/w/{{weathr.icon}}.png'>
+      </div>
+      <div class="row justify-content-center text-uppercase">{{weathr.description}}</div>
+
+      <h5 class=" text-center temp ">{{temp}} °C</h5>
+    </div>
+    <div class="card cardDetails justify-content-center text-white bg-dark mb-3">
+      <h5 class="datails text-uppercase text-center " style="padding-bottom:2%">More details</h5>
+      <p class="card-text text-white text-center ">Pressure:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{weatherData.main.pressure}}</p>
+      <p class="card-text text-white text-center">Humidity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{weatherData.main.humidity}}</p>
+      <p class="card-text text-white text-center ">Visibility:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{weatherData.visibility}}</p>
+      <p class="card-text text-white text-center ">Temp-Min:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{min}} °C</p>
+      <p class="card-text text-white text-center">Temp-Max: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{max}} °C </p>
+      <p class="card-text text-white text-center ">Wind-Speed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{weatherData.wind.speed}} </p>
+      <p class="card-text text-white text-center">Wind-degree:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{weatherData.wind.deg}} </p>
+    </div>
+
+
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="card card3 text-white bg-dark mb-3" style="max-width: 10rem;" *ngFor="let item of forcast ;let i=index;">
+      <div class="card-header">{{dayOfWeek[i]}}
+      </div>
+      <div class="card-body text-success">
+        <img width="50%" height="50%" id="wicon" src='http://openweathermap.org/img/w/{{item.weather[0].icon}}.png'>
+        <p class="card-text text-white text-center">{{max}} °C</p>
+      </div>
+    </div>
+  </div>
+
+
+</section>
